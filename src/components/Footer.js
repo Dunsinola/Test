@@ -10,12 +10,12 @@ export default function Footer() {
 
     <div className="lang">
         <form >
-            
-                <select id="Currency" name="currency">
-                    <option value="volvo">Naira</option>
-                    <option value="saab">pounds</option>
-                    <option value="fiat">yen</option>
-                    <option value="audi">Audi</option>
+        <label for="currency">Coming soon...</label>
+                <select id="currency" name="currency">
+                    <option value="Naira">Naira</option>
+                    <option value="Pound">Pound</option>
+                    <option value="Euro">Euro</option>
+                    <option value="Dollar">Dollar</option>
                 </select>
             
         </form>
