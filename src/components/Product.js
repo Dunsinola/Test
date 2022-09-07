@@ -6,7 +6,7 @@ import { FaRegHeart } from "react-icons/fa";
 // Actions
 import { addToCart } from "../redux/actions/cartActions";
 
-const Product = ({ imageUrl, description, price, name, productId }) => {
+const Product = ({ imageUrl, description, price, name, productId,avatar }) => {
   
   const dispatch = useDispatch();
  
@@ -15,7 +15,7 @@ const Product = ({ imageUrl, description, price, name, productId }) => {
   const addToCartHandler = () => {
     dispatch(addToCart(
       
-      imageUrl, description, price, name,  productId 
+      avatar, description, price, name,  productId 
 
 
       ));
