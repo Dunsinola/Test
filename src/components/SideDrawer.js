@@ -23,9 +23,7 @@ const SideDrawer = ({ show, click }) => {
           <Link to="/cart">
            
             <span>
-              favs{" "}
-              <span className="sidedrawer__cartbadge">{getCartCount()}</span>
-            </span>
+              Favourites</span>
           </Link>
         </li>
         <li>

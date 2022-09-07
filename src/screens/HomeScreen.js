@@ -32,7 +32,7 @@ console.log(products)
           products.map((product) => (
             <Product
               key={product._id}
-              name={product.name}
+              name={product._source.display_name}
               description={product._source.services_overview_title}
               price={product._source.starting_from}
               imageUrl={product._source.service_photo}

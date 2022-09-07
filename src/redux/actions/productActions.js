@@ -6,9 +6,7 @@ export const getProducts = () => async (dispatch) => {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
 
     let { data } = await axios.get("https://api.terawork.com/service-categories/sellers-services/computer-software-development");
- data=(data.data.
-  service_search_results.
-  hits)
+ data=(data.data.service_search_results.hits)
 
   
   
@@ -31,7 +29,7 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST });
     let { data } = await axios.get("https://api.terawork.com/service-categories/sellers-services/computer-software-development");
-    data=(data.data.service_search_results.hits)
+    data=(data.data.service_search_results.hits).filter(developer => developer._id ===id)
   
  
 

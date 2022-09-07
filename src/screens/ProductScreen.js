@@ -7,22 +7,37 @@ import { getProductDetails } from "../redux/actions/productActions";
 import { addToCart } from "../redux/actions/cartActions";
 
 const ProductScreen = ({ match, history }) => {
-  const [qty, setQty] = useState(1);
-  const dispatch = useDispatch();
-
+ const dispatch = useDispatch();
+ 
   const productDetails = useSelector((state) => state.getProductDetails);
   const { loading, error, product } = productDetails;
-
+ 
+ 
+  console.log(product[0]._id)
+ 
+ 
   useEffect(() => {
-    if (product && match.params.id !== product._id) {
+    if (product && match.params.id !== product[0]._id) {
       dispatch(getProductDetails(match.params.id));
     }
   }, [dispatch, match, product]);
 
   const addToCartHandler = () => {
-    dispatch(addToCart(product._id, qty));
-    history.push(`/cart`);
+    dispatch(addToCart(
+      
+      product[0]._id,
+      product[0]._source.service_photo,
+      product[0].name
+      
+      ));
+    
+    
+    
+      history.push(`/cart`);
   };
+
+  
+
 
   return (  
     <div className="productscreen">
@@ -31,36 +46,38 @@ const ProductScreen = ({ match, history }) => {
       ) : error ? (
         <h2>{error}</h2>
       ) : (
-        <>
-    {console.log(product)}
+        <>  
+         {console.log(product)
+    
+        
+
+    }
+
+
           <div className="productscreen__left">
             <div className="left__image">
-              <img src={product.imageUrl} alt={product._source.imageUrl} />
+              <img src={[product[0]._source.avatar]} alt={[product[0].name]} />
             </div>
-            {/* let data = [
-      {
-        id:330000932-6343,
-        name: "PlayStation 5",
-        imageUrl:
-          "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80",
-        description:
-          "PlayStation 5 (PS5) is a home video game console developed by Sony Interactive Entertainment. Announced in 2019 as the successor to the PlayStation 4, the PS5 was released on November 12, 2020 in Australia, Japan, New Zealand, North America, Singapore, and South Korea, and November 19, 2020 onwards in other major markets except China and India.",
-        price: 499,
-        countInStock: 15,
-      } */}
-
+{/*            
+            key={product._id}
+              name={product[0].name}
+              description={product[0]._source.services_overview_title}
+              price={product[0]._source.starting_from}
+              imageUrl={product[0]._source.service_photo}
+              avatar={product[0]._source.avatar}
+              productId={product[0]._id} */}
 
             <div className="left__info">
-              <p className="left__name">{product.imgUrl}</p>
-              <p>Price: {product._source.starting_from}</p>
-              <p>Description: {product._source.service_description}</p>
+              <p className="left__name">{[product[0].name]}</p>
+              <p>Price: {[product[0]._source.starting_from]}</p>
+              <p>Description: {[product[0]._source.services_overview_title]}</p>
             </div>
           </div>
           <div className="productscreen__right">
             <div className="right__info">
               <p>
                 Price:
-                <span>{product._source.starting_from}</span>
+                <span>{[product[0]._source.starting_from]}</span>
               </p>
              
            
