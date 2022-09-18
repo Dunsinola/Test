@@ -1,5 +1,5 @@
 import "./HomeScreen.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -8,16 +8,26 @@ import Product from "../components/Product";
 import Footer from "../components/Footer";
 //Actions
 import { getProducts as listProducts } from "../redux/actions/productActions";
-
+import { convertCurrency  as listConvertCurrency } from "../redux/actions/currencyActions";
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
   const getProducts = useSelector((state) => state.getProducts);
   const { products, loading, error } = getProducts;
-console.log(products)
+
+
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
+
+  const convertCurrency = useSelector((state) => state.convertCurrency);
+  const { currency } =convertCurrency;
+
+  console.log(currency )
+
+  useEffect(() => {
+    dispatch(listConvertCurrency());
+  }, [dispatch])
 
   return (
     <div className="homescreen">
@@ -34,7 +44,7 @@ console.log(products)
               key={product._id}
               name={product._source.display_name}
               description={product._source.services_overview_title}
-              price={product._source.starting_from}
+              price={product._source.starting_from * currency}
               imageUrl={product._source.service_photo}
               avatar={product._source.avatar}
               productId={product._id}

@@ -1,7 +1,7 @@
 import * as actionTypes from "../constants/cartConstants";
 import axios from "axios";
 
-export const addToCart = ( imageUrl, description, price, name,  productId ) => async (dispatch, getState) => {
+export const addToCart = ( imageUrl, description, price, name,  productId ) =>  (dispatch, getState) => {
   // let { data } = await axios.get("https://api.terawork.com/service-categories/sellers-services/computer-software-development");
   // // data=(data.data.service_search_results.hits.filter (data =>data._id === id))
 

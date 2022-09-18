@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Reducers
+import { convertCurrencyReducer } from "./reducers/currencyReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import {
   getProductsReducer,
@@ -11,6 +12,7 @@ import {
 
 const reducer = combineReducers({
   cart: cartReducer,
+  convertCurrency:convertCurrencyReducer,
   getProducts: getProductsReducer,
   getProductDetails: getProductDetailsReducer,
 });

@@ -1,6 +1,6 @@
 import "./Product.css";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { FaRegHeart } from "react-icons/fa";
 
 // Actions
